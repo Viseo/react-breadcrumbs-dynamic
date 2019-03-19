@@ -24,3 +24,6 @@ tmp
 
 # Users Environment Variables
 .lock-wscript
+
+# vs code workspace
+.vscode/
