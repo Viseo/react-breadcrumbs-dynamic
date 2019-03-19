@@ -2,7 +2,7 @@
   "name": "react-breadcrumbs-dynamic",
   "version": "1.2.1",
   "description": "React dynamic breadcrumbs extremely flexible and easy to use",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/oklas/react-breadcrumbs-dynamic"
@@ -81,7 +81,7 @@
     "testURL": "http://localhost"
   },
   "scripts": {
-    "build": "babel -d dist/ src/index.js",
+    "build": "babel src --out-dir lib --ignore spec.js,spec-set.js",
     "build:example": "cd example && webpack",
     "start:example": "cd example && webpack-dev-server --config webpack.config.js",
     "build:version": "node -p -e \"require('./package.json').version\"",
