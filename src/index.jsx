@@ -61,29 +61,30 @@ const Breadcrumbs_ = ({
   const sortedBreadcrumbsData = sort(compare, breadcrumbsData);
 
   const startItems = compose(
-    ifElse(isEmpty, identity, append(separatorElement)),
-    intersperse(separatorElement),
     map(item => (
-      <span className="item">
+      <li className="item">
         <Item {...prepareProps(item, rename, duplicate, remove)} />
-      </span>
+        {separatorElement}
+      </li>
     )),
     init
   )(sortedBreadcrumbsData);
 
   const lastData = last(sortedBreadcrumbsData);
   const lastItem = lastData ? (
-    <span /*key={length(startItems)}*/ className="item item--final">
+    <li className="item item--final">
       <FinalItem {...prepareProps(lastData, rename, duplicate, remove)} {...finalProps} />
-    </span>
+    </li>
   ) : null;
 
   return (
     <Container {...containerProps}>
-      {startItems.map((Item, i) => (
-        <Item.type key={i} {...Item.props} />
-      ))}
-      {lastItem}
+      <ol>
+        {startItems.map((Item, i) => (
+          <Item.type key={i} {...Item.props} />
+        ))}
+        {lastItem}
+      </ol>
     </Container>
   );
 };
